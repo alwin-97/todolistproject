@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="text-center">
+            My TODOList Application
+        </div>
+
+        <img
+                src="{% static 'images/Firefox.png' %}"
+                height="100px"
+                width="100px"
+        >
+
+        <div class="row m-auto mt-3">
+            <div class="col-8">
+                <div class="text-center p-2 fw-bolder">
+                    Pending Tasks
+                    <hr/>
+                </div>
+
+                {% for task in tasks %}
+                    <div class="p-2 bg-light m-1">
+                        {{ task }}
+                        <i class="fa-solid fa-pen-to-square float-end m-1"></i>
+                        <i class="fa-solid fa-check-to-slot float-end m-1"></i>
+                        <i class="fa-solid fa-trash-can float-end m-1"></i>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="col-4 bg-light">
+                <div class="text-center p-2 fw-bolder">
+                    Add new Task
+                    <hr/>
+                </div>
+                <div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control"
+                                   id="task" name="task"
+                                   placeholder="New Task">
+                            <label for="task">New Task</label>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-sm btn-warning"
+                                    type="submit">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
