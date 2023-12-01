@@ -15,7 +15,7 @@
         >
 
         <div class="row m-auto mt-3">
-            <div class="col-8">
+            <div class="col-12">
                 <div class="text-center p-2 fw-bolder">
                     Pending Tasks
                     <hr/>
@@ -23,7 +23,12 @@
 
                 {% for task in tasks %}
                     <div class="p-2 bg-light m-1">
-                        {{ task }}
+                        {{ task.task_title }}
+                        <br/>
+                        {{ task.task_description|safe }}
+                        <small>
+                            Created at {{ task.task_created_on }}
+                        </small>
                         <i class="fa-solid fa-pen-to-square float-end m-1"></i>
                         <i class="fa-solid fa-check-to-slot float-end m-1"></i>
                         <i class="fa-solid fa-trash-can float-end m-1"></i>
@@ -31,7 +36,7 @@
                 {% endfor %}
 
             </div>
-            <div class="col-4 bg-light">
+            <div class="col-12 bg-light">
                 <div class="text-center p-2 fw-bolder">
                     Add new Task
                     <hr/>
@@ -45,6 +50,10 @@
                                    placeholder="New Task">
                             <label for="task">New Task</label>
                         </div>
+                        <div class="mb-3">
+                            <textarea id="description" name="description">
+                            </textarea>
+                        </div>
                         <div class="text-center">
                             <button class="btn btn-sm btn-warning"
                                     type="submit">
@@ -57,4 +66,7 @@
         </div>
     </div>
 
+    <script>
+        var editor1 = new RichTextEditor("#description");
+    </script>
 {% endblock content %}
