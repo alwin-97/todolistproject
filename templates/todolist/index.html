@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="container mt-5">
+    <div class="m-5">
         <div class="text-center">
             My TODOList Application
         </div>
@@ -15,7 +15,7 @@
         >
 
         <div class="row m-auto mt-3">
-            <div class="col-12">
+            <div class="col-6">
                 <div class="text-center p-2 fw-bolder">
                     Pending Tasks
                     <hr/>
@@ -36,7 +36,7 @@
                 {% endfor %}
 
             </div>
-            <div class="col-12 bg-light">
+            <div class="col-6 bg-light">
                 <div class="text-center p-2 fw-bolder">
                     Add new Task
                     <hr/>
@@ -51,7 +51,7 @@
                             <label for="task">New Task</label>
                         </div>
                         <div class="mb-3">
-                            <textarea id="description" name="description">
+                            <textarea id="description" name="description" >
                             </textarea>
                         </div>
                         <div class="text-center">

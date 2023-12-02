@@ -1,5 +1,7 @@
 venv
 db.sqlite3
-todolist/migrations/*
-todolist/__pycache__/*
-__pycache__/*
+todolist/migrations/
+
+__pycache__/
+todolist/__pycache__/
+todolistproject/__pycache__/

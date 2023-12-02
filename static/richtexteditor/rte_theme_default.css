@@ -8,6 +8,7 @@
     background-color: #fff;
     user-select: none;
     min-height: 200px;
+    min-width: auto !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
