@@ -3,65 +3,89 @@
 
 {% block content %}
 
-    <div class="m-5">
-        <div class="text-center">
-            My TODOList Application
+    <div class="row m-auto mt-3">
+        <div class="col-6">
+            <div class="text-center p-2 fw-bolder">
+                Pending Tasks
+                <hr/>
+            </div>
+
+            <div class="accordion accordion-flush" id="accordionTaskList">
+                {% for task in tasks %}
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-task-{{ forloop.counter }}" aria-expanded="false"
+                                    aria-controls="flush-task-{{ forloop.counter }}">
+                                {% if task.task_title %}
+                                    <div class="fw-bold">
+                                        {{ task.task_title }}
+                                    </div>
+                                {% else %}
+                                    (No Title)
+                                {% endif %}
+                            </button>
+                        </h2>
+                        <div id="flush-task-{{ forloop.counter }}" class="accordion-collapse collapse"
+                             data-bs-parent="#accordionTaskList">
+                            <div class="accordion-body">
+                                {% if task.task_description %}
+                                    <div class="mt-2 mb-3">
+                                        {{ task.task_description|safe }}
+                                    </div>
+                                {% else %}
+                                    <div class="text-muted small">
+                                        No Description Added
+                                    </div>
+                                {% endif %}
+
+                                <div class="row">
+                                    <div class="col fw-light fst-italic">
+                                        Created at {{ task.task_created_on }}
+                                    </div>
+
+                                    <div class="col">
+                                        <i class="fa-solid fa-pen-to-square float-end m-1"></i>
+                                        <i class="fa-solid fa-check-to-slot float-end m-1"></i>
+                                        <i class="fa-solid fa-trash-can float-end m-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
         </div>
 
-        <img
-                src="{% static 'images/Firefox.png' %}"
-                height="100px"
-                width="100px"
-        >
-
-        <div class="row m-auto mt-3">
-            <div class="col-6">
-                <div class="text-center p-2 fw-bolder">
-                    Pending Tasks
-                    <hr/>
-                </div>
-
-                {% for task in tasks %}
-                    <div class="p-2 bg-light m-1">
-                        {{ task.task_title }}
-                        <br/>
-                        {{ task.task_description|safe }}
-                        <small>
-                            Created at {{ task.task_created_on }}
-                        </small>
-                        <i class="fa-solid fa-pen-to-square float-end m-1"></i>
-                        <i class="fa-solid fa-check-to-slot float-end m-1"></i>
-                        <i class="fa-solid fa-trash-can float-end m-1"></i>
-                    </div>
-                {% endfor %}
-
+        <div class="col-6">
+            <div class="text-center p-2 fw-bolder">
+                Add new Task
+                <hr/>
             </div>
-            <div class="col-6 bg-light">
-                <div class="text-center p-2 fw-bolder">
-                    Add new Task
-                    <hr/>
-                </div>
-                <div>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control"
-                                   id="task" name="task"
-                                   placeholder="New Task">
-                            <label for="task">New Task</label>
-                        </div>
-                        <div class="mb-3">
-                            <textarea id="description" name="description" >
-                            </textarea>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-sm btn-warning"
-                                    type="submit">
-                                Save
-                            </button>
-                        </div>
-                    </form>
-                </div>
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control"
+                               id="task" name="task"
+                               placeholder="New Task">
+                        <label for="task">New Task</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Task Description</label>
+                        <textarea id="description" name="description">
+                        </textarea>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-warning"
+                                type="submit">
+                            <i class="fa-solid fa-floppy-disk"></i> Add Task
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
