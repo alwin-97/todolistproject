@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from todolist.views import index
+from todolist.views import index, deleteTask, editTask
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', index, name='index'),
+    path('edit/<str:id>',editTask,name='edit-task'),
+    path('delete/<str:id>',deleteTask,name='delete-task'),
 ]

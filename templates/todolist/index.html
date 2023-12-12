@@ -46,9 +46,13 @@
                                     </div>
 
                                     <div class="col">
-                                        <i class="fa-solid fa-pen-to-square float-end m-1"></i>
-                                        <i class="fa-solid fa-check-to-slot float-end m-1"></i>
-                                        <i class="fa-solid fa-trash-can float-end m-1"></i>
+                                        <a href="{% url 'edit-task' task.taskid %}">
+                                            <i class="fa-solid fa-pen-to-square float-end m-1"></i>
+                                        </a>
+
+                                        <a href="{% url 'delete-task' task.taskid %}">
+                                            <i class="fa-solid fa-trash-can float-end m-1"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

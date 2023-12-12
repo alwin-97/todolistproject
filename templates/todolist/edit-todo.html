@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <div class="col-12 mb-3 bg-light p-3">
+            Editing Task: {{ task.task_title }}
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control"
+                       id="task" name="task"
+                       placeholder="New Task">
+                <label for="task">New Task</label>
+            </div>
+            <div class="mb-3">
+                <label for="description">Task Description</label>
+                <textarea id="description" name="description">
+                        </textarea>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-warning"
+                        type="submit">
+                    <i class="fa-solid fa-floppy-disk"></i> Update Task
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var editor1 = new RichTextEditor("#description");
+    </script>
+
+{% endblock content %}
