@@ -10,13 +10,14 @@
             {% csrf_token %}
             <div class="form-floating mb-3">
                 <input type="text" class="form-control"
-                       id="task" name="task"
+                       id="task" name="task" value="{{ task.task_title }}"
                        placeholder="New Task">
                 <label for="task">New Task</label>
             </div>
             <div class="mb-3">
                 <label for="description">Task Description</label>
                 <textarea id="description" name="description">
+                    {{ task.task_description }}
                         </textarea>
             </div>
             <div class="text-center">
