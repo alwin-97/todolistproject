@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path
 
 from todolist.views import index, deleteTask, editTask
+from authsystem.views import login_page, admin_dashbord
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', index, name='index'),
-    path('edit/<str:id>',editTask,name='edit-task'),
-    path('delete/<str:id>',deleteTask,name='delete-task'),
+    # path('', index, name='index'),
+    # path('edit/<str:id>',editTask,name='edit-task'),
+    # path('delete/<str:id>',deleteTask,name='delete-task'),
+
+    path('',login_page,name='login'),
+    path('admin-dashborad',admin_dashbord,name='admin-dashboard'),
 ]
