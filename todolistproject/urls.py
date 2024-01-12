@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from todolist.views import index, deleteTask, editTask
-from authsystem.views import login_page, admin_dashbord
+from authsystem.views import login_page, admin_dashbord, register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +28,6 @@ urlpatterns = [
     # path('delete/<str:id>',deleteTask,name='delete-task'),
 
     path('',login_page,name='login'),
+    path('register',register,name='register'),
     path('admin-dashborad',admin_dashbord,name='admin-dashboard'),
 ]
